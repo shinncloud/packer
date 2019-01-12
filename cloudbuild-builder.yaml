@@ -11,4 +11,4 @@ steps:
 secrets:
   - kmsKeyName: projects/shinncloud/locations/global/keyRings/packer/cryptoKeys/buildkite
     secretEnv:
-      PASSWORD: CiQAb9WAmBb+7LrPfmU6O72dFf2Kx24c5Iv8z7AP4E5hVF83PBoSWwAEUrql0FaSZMvdagwXFnKDDq72kUQoMoBusy/zZPNS3Rf5EfhJdopmY6EXc2+h7hni4J4eTVw+1YrJ+zNtOAX9Ffo206GDORUevRfnh4wLUaRRd7Jq5BN7hXY=
+      BUILDKITE_KEY: CiQAb9WAmBb+7LrPfmU6O72dFf2Kx24c5Iv8z7AP4E5hVF83PBoSWwAEUrql0FaSZMvdagwXFnKDDq72kUQoMoBusy/zZPNS3Rf5EfhJdopmY6EXc2+h7hni4J4eTVw+1YrJ+zNtOAX9Ffo206GDORUevRfnh4wLUaRRd7Jq5BN7hXY=
