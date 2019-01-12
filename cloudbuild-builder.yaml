@@ -5,7 +5,7 @@ steps:
       - -var
       - project_id=$PROJECT_ID
       - -var
-      - buildkite_token=$BUILDKITE_KEY
+      - buildkite_token=$$BUILDKITE_KEY
       - template-builder-ubuuntu-18.04.json
     secretEnv: ['BUILDKITE_KEY']
 secrets:
