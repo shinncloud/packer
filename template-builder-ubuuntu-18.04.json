@@ -1,0 +1,31 @@
+{
+  "variables": {
+    "buildkite_token": "",
+    "buildkite_version": "3.8.2-2742",
+    "project_id": "shinncloud"
+  },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "project_id": "{{user `project_id`}}",
+      "source_image_family": "ubuntu-1804-lts",
+      "ssh_username": "root",
+      "zone": "us-west2-a",
+      "image_name": "builder-{{isotime | clean_image_name}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "environment_vars": [
+        "AGENT_TOKEN={{user `buildkite_token`}}",
+        "AGENT_VERSION={{user `buildkite_version`}}"
+      ],
+      "scripts": [
+          "scripts/common.sh",
+          "scripts/docker.sh",
+          "scripts/buildkite.sh"
+        ]
+    }
+  ]
+}
