@@ -3,6 +3,7 @@
 ## Bootstrap
 
 ```
+gcloud source repos create packer
 git config --global credential.https://source.developers.google.com.helper gcloud.sh
 git remote add google https://source.developers.google.com/p/shinncloud/r/packer
 
@@ -16,13 +17,16 @@ gcloud kms keys add-iam-policy-binding buildkite \
 gcloud projects add-iam-policy-binding shinncloud \
   --member serviceAccount:453728115251@cloudbuild.gserviceaccount.com \
   --role roles/editor
-gcloud source repos create packer
+```
 
+## Encrypt Buildkite Key
 
-
+```
+export BUILDKITE_KEY=<yourbuildkitekey>
 echo -n $BUILDKITE_KEY | gcloud kms encrypt \
   --plaintext-file=- \
   --ciphertext-file=- \
   --location=global \
   --keyring=packer \
   --key=buildkite | base64
+```
