@@ -1,0 +1,32 @@
+package:
+  buildkite-agent:
+    installed: true
+service:
+  buildkite-agent:
+    enabled: true
+    running: true
+  docker:
+    enabled: true
+    running: true
+user:
+  buildkite-agent:
+    exists: true
+    uid: 999
+    gid: 998
+    groups:
+      - buildkite-agent
+      - docker
+    home: /var/lib/buildkite-agent
+    shell: /bin/sh
+group:
+  buildkite-agent:
+    exists: true
+    gid: 998
+  docker:
+    exists: true
+    gid: 999
+process:
+  buildkite-agent:
+    running: true
+  dockerd:
+    running: true

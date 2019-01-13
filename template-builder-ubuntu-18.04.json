@@ -17,6 +17,16 @@
   ],
   "provisioners": [
     {
+      "type": "file",
+      "source": "config/goss.service",
+      "destination": "/etc/systemd/system/goss.service"
+    },
+    {
+      "type": "file",
+      "source": "config/goss.yaml",
+      "destination": "/etc/goss.yaml"
+    },
+    {
       "type": "shell",
       "environment_vars": [
         "AGENT_TOKEN={{user `buildkite_token`}}",
@@ -25,7 +35,8 @@
       "scripts": [
           "scripts/common.sh",
           "scripts/docker.sh",
-          "scripts/buildkite.sh"
+          "scripts/buildkite.sh",
+          "scripts/goss.sh"
         ]
     }
   ]

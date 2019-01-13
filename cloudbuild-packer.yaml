@@ -8,6 +8,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/packer:${_PACKER_VERSION}',
         '-t', 'gcr.io/$PROJECT_ID/packer',
+        '-f', 'cloudbuild/packer/Dockerfile',
         '--build-arg', 'PACKER_VERSION=${_PACKER_VERSION}',
         '--build-arg', 'PACKER_VERSION_SHA256SUM=${_PACKER_VERSION_SHA256SUM}',
         '.']

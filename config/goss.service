@@ -1,0 +1,10 @@
+[Unit]
+Description=goss health check service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/goss --gossfile /etc/goss.yaml serve --cache 30s --format json
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
