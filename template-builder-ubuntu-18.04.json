@@ -2,7 +2,8 @@
   "variables": {
     "buildkite_token": "",
     "buildkite_version": "3.8.2-2742",
-    "project_id": "shinncloud"
+    "project_id": "shinncloud",
+    "version": ""
   },
   "builders": [
     {
@@ -11,7 +12,7 @@
       "source_image_family": "ubuntu-1804-lts",
       "ssh_username": "root",
       "zone": "us-west2-a",
-      "image_name": "builder-{{isotime | clean_image_name}}"
+      "image_name": "{{user `version` | clean_image_name}}"
     }
   ],
   "provisioners": [
