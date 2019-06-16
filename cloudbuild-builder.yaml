@@ -1,7 +1,7 @@
 steps:
   - id: packer
-    name: gcr.io/$PROJECT_ID/packer:1.3.3
-    entrypoint: 'bash'
+    name: hashicorp/packer:1.4.1
+    entrypoint: 'sh'
     args: [
       '-c',
       'packer build -var project_id=$PROJECT_ID -var buildkite_token=$$BUILDKITE_KEY -var version=$TAG_NAME template-builder-ubuntu-18.04.json'
