@@ -15,8 +15,16 @@ sed -i "s/%hostname-%n/%hostname/g" /etc/buildkite-agent/buildkite-agent.cfg
 usermod -G docker buildkite-agent
 systemctl enable buildkite-agent
 mkdir -p /etc/systemd/system/buildkite-agent.service.d
+
 cat <<EOF > /etc/systemd/system/buildkite-agent.service.d/env.conf
 [Service]
 Environment=BUILDKITE_AGENT_TAGS_FROM_GCP=true
 Environment=BUILDKITE_AGENT_TAGS="$AGENT_TAGS"
 EOF
+
+mkdir -p /var/lib/buildkite-agent/.ssh
+mv /tmp/buildkite-packer /var/lib/buildkite-agent/.ssh/buildkite-packer
+mv /tmp/ssh_config /var/lib/buildkite-agent/.ssh/config
+chown -R buildkite-agent:buildkite-agent /var/lib/buildkite-agent/.ssh
+chmod 700 /var/lib/buildkite-agent/.ssh
+chmod 600 /var/lib/buildkite-agent/.ssh/buildkite-packer

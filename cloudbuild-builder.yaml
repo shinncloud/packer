@@ -1,4 +1,13 @@
 steps:
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - kms
+      - decrypt
+      - --ciphertext-file=keys/buildkite-packer.enc
+      - --plaintext-file=keys/buildkite-packer
+      - --location=global
+      - --keyring=packer
+      - --key=buildkite
   - id: packer
     name: hashicorp/packer:1.4.1
     entrypoint: 'sh'

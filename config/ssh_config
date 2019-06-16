@@ -1,0 +1,3 @@
+Host github.com-builder
+  HostName github.com
+  IdentityFile /var/lib/buildkite-agent/.ssh/buildkite-packer

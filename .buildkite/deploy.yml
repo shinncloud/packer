@@ -1,0 +1,10 @@
+steps:
+  - block: ":rocket: Deploy"
+  - label: ":package: Packer Build"
+    command: if [ -n "$BUILDKITE_TAG" ]; then packer build -var project_id=shinncloud -var buildkite_token=$BUILDKITE_KEY -var version=$BUILDKITE_TAG template-builder-ubuntu-18.04.json; else echo "No tag so not building image"; fi
+    plugins:
+      - docker#v3.2.0:
+          image: hashicorp/packer:1.4.1
+          environment: ["BUILDKITE_KEY", "BUILDKITE_TAG"]
+          shell: ["/bin/sh", "-e", "-c"]
+          entrypoint: ""
