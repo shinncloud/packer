@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 AGENT_TOKEN="${1:-$AGENT_TOKEN}"
 AGENT_VERSION="${2:-3.8.2-2742}"
 
