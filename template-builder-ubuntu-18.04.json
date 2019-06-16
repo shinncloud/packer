@@ -36,11 +36,21 @@
       "destination": "/etc/goss.yaml"
     },
     {
+      "type": "file",
+      "source": "keys/buildkite-packer",
+      "destination": "/tmp/buildkite-packer"
+    },
+    {
+      "type": "file",
+      "source": "config/ssh_config",
+      "destination": "/tmp/ssh_config"
+    },
+    {
       "type": "shell",
       "environment_vars": [
         "AGENT_TOKEN={{user `buildkite_token`}}",
         "AGENT_VERSION={{user `buildkite_version`}}",
-        "AGENT_TAGS=image:{{user `version`}}"
+        "AGENT_TAGS=image={{user `version`}}"
       ],
       "scripts": [
           "scripts/common.sh",
