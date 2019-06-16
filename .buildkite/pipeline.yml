@@ -1,0 +1,19 @@
+steps:
+  - label: ':bash: Environment Variables'
+    command: env
+    plugins:
+      - docker#v3.2.0:
+          image: hashicorp/packer:1.4.1
+          entrypoint: ""
+          shell: false
+          propagate-environment: true
+          init: false
+  - label: ':hammer: Packer Validate'
+    command: packer validate template-builder-ubuntu-18.04.json
+    plugins:
+      - docker#v3.2.0:
+          image: hashicorp/packer:1.4.1
+          environment: ["BUILDKITE_KEY", "BUILDKITE_IMAGE_TAG"]
+          shell: ["/bin/sh", "-e", "-c"]
+          entrypoint: ""
+  - command: if [ -n "$BUILDKITE_TAG" ]; then buildkite-agent pipeline upload .buildkite/deploy.yml; fi
