@@ -13,3 +13,8 @@ sed -i "s/xxx/$AGENT_TOKEN/g" /etc/buildkite-agent/buildkite-agent.cfg
 sed -i "s/%hostname-%n/%hostname/g" /etc/buildkite-agent/buildkite-agent.cfg
 usermod -G docker buildkite-agent
 systemctl enable buildkite-agent
+mkdir -p /etc/systemd/system/buildkite-agent.service.d
+cat <<EOF > /etc/systemd/system/buildkite-agent.service.d/env.conf
+[Service]
+Environment=BUILDKITE_AGENT_TAGS_FROM_GCP=true
+EOF
