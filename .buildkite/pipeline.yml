@@ -16,4 +16,5 @@ steps:
           environment: ["BUILDKITE_KEY", "BUILDKITE_IMAGE_TAG"]
           shell: ["/bin/sh", "-e", "-c"]
           entrypoint: ""
-  - command: if [ -n "$BUILDKITE_TAG" ]; then buildkite-agent pipeline upload .buildkite/deploy.yml; fi
+  - label: ':ballot_box_with_check: Check Deploy'
+    command: if [ -n "$BUILDKITE_TAG" ]; then buildkite-agent pipeline upload .buildkite/deploy.yml; fi

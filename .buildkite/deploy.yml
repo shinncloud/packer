@@ -1,7 +1,5 @@
 steps:
   - block: ":rocket: Deploy"
-  - label: ':unlock: Decrypt SSH keys'
-    command: gcloud kms decrypt --ciphertext-file=keys/buildkite-packer.enc --plaintext-file=keys/buildkite-packer --location=global --keyring=packer --key=buildkite
   - label: ":package: Packer Build"
     command: if [ -n "$BUILDKITE_TAG" ]; then packer build -var project_id=shinncloud -var buildkite_token=$BUILDKITE_KEY -var version=$BUILDKITE_TAG template-builder-ubuntu-18.04.json; else echo "No tag so not building image"; fi
     plugins:
