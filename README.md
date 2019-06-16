@@ -1,22 +1,11 @@
 # Packer Builders
 
-## Bootstrap
+## Configure Repository
 
 ```
-gcloud source repos create packer
 git config --global credential.https://source.developers.google.com.helper gcloud.sh
 git remote add google https://source.developers.google.com/p/shinncloud/r/packer
 
-gcloud kms keyrings create packer --location=global
-gcloud kms keys create buildkite --location=global --keyring=packer --purpose=encryption
-gcloud kms keys add-iam-policy-binding buildkite \
-  --location=global \
-  --keyring=packer \
-  --member=serviceAccount:453728115251@cloudbuild.gserviceaccount.com \
-  --role=roles/cloudkms.cryptoKeyDecrypter
-gcloud projects add-iam-policy-binding shinncloud \
-  --member serviceAccount:453728115251@cloudbuild.gserviceaccount.com \
-  --role roles/editor
 ```
 
 ## Encrypt Buildkite Key
@@ -30,3 +19,11 @@ echo -n $BUILDKITE_KEY | gcloud kms encrypt \
   --keyring=packer \
   --key=buildkite | base64
 ```
+
+## Build Image
+
+```
+gcloud builds submit --config cloudbuild-builder.yaml --substitutions TAG_NAME=builder-v10
+```
+
+Use this `TAG_NAME` when deploying the template with Terraform in the `shared` folder.
