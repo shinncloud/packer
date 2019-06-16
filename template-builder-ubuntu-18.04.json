@@ -1,7 +1,7 @@
 {
   "variables": {
     "buildkite_token": "",
-    "buildkite_version": "3.8.2-2742",
+    "buildkite_version": "3.13.0-3059",
     "project_id": "shinncloud",
     "version": ""
   },
