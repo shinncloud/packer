@@ -4,3 +4,4 @@ echo '--- :sparkles: Exporting Buildkite Agent key'
 export BUILDKITE_KEY="$(echo -n "CiQAb9WAmHrjGlqFQvDLPpAxuA6QxDw6DfJzYy5DVKtzXlm5QFESWwAEUrqlDtdU+e63FUZEqxZorrHlbM7rBGMfoy1hx6VZSRE792DLKIu3KRbXBEqhLshw6kcE/Y3yKmJFtXQ0hib0IWEYwHSVN7zYmnIPbo8oPNmkFqaeZUXHrgo=" | base64 -d | /snap/bin/gcloud kms decrypt --plaintext-file=- --ciphertext-file=- --location=global --keyring=packer --key=buildkite)"
 
 /snap/bin/gcloud kms decrypt --ciphertext-file=keys/buildkite-packer.enc --plaintext-file=keys/buildkite-packer --location=global --keyring=packer --key=buildkite
+/snap/bin/gcloud kms decrypt --ciphertext-file=keys/buildkite-terraform.enc --plaintext-file=keys/buildkite-terraform --location=global --keyring=packer --key=buildkite
