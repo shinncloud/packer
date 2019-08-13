@@ -24,7 +24,9 @@ EOF
 
 mkdir -p /var/lib/buildkite-agent/.ssh
 mv /tmp/buildkite-packer /var/lib/buildkite-agent/.ssh/buildkite-packer
+mv /tmp/buildkite-terraform /var/lib/buildkite-agent/.ssh/buildkite-terraform
 mv /tmp/ssh_config /var/lib/buildkite-agent/.ssh/config
 chown -R buildkite-agent:buildkite-agent /var/lib/buildkite-agent/.ssh
 chmod 700 /var/lib/buildkite-agent/.ssh
 chmod 600 /var/lib/buildkite-agent/.ssh/buildkite-packer
+chmod 600 /var/lib/buildkite-agent/.ssh/buildkite-terraform

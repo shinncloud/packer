@@ -42,6 +42,11 @@
     },
     {
       "type": "file",
+      "source": "keys/buildkite-terraform",
+      "destination": "/tmp/buildkite-terraform"
+    },
+    {
+      "type": "file",
       "source": "config/ssh_config",
       "destination": "/tmp/ssh_config"
     },
