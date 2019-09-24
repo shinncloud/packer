@@ -3,8 +3,8 @@ echo '--- :sparkles: Exporting secrets'
 
 source bin/keys
 
-export BUILDKITE_KEY="$(echo -n "$BUILDKITE_KEY_ENC" | base64 --decode | gcloud kms decrypt --plaintext-file=- --ciphertext-file=- --location=global --keyring=packer --key=buildkite)"
 export PATH="${PATH}:/snap/bin"
+export BUILDKITE_KEY="$(echo -n "$BUILDKITE_KEY_ENC" | base64 --decode | gcloud kms decrypt --plaintext-file=- --ciphertext-file=- --location=global --keyring=packer --key=buildkite)"
 
 for key in ${PACKER_KEYS[*]}; do
   gcloud kms decrypt --ciphertext-file="${key}.enc" --plaintext-file="$key" --location=global --keyring=packer --key=buildkite
