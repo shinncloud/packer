@@ -30,3 +30,6 @@ chown -R buildkite-agent:buildkite-agent /var/lib/buildkite-agent/.ssh
 chmod 700 /var/lib/buildkite-agent/.ssh
 chmod 600 /var/lib/buildkite-agent/.ssh/buildkite-packer
 chmod 600 /var/lib/buildkite-agent/.ssh/buildkite-terraform
+
+# Disable detached head warnings
+sudo -H -u buildkite-agent git config --global advice.detachedHead false

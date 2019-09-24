@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+if [ -n "$BUILDKITE_TAG" ]; then
+  packer build \
+    -var project_id=shinncloud \
+    -var buildkite_token="$BUILDKITE_KEY" \
+    -var version="$BUILDKITE_TAG" \
+    template-builder-ubuntu-18.04.json
+else
+  echo "Create a git tag to build and push image."
+fi
