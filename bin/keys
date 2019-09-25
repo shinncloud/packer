@@ -1,5 +1,0 @@
-BUILDKITE_KEY_ENC="CiQAb9WAmHrjGlqFQvDLPpAxuA6QxDw6DfJzYy5DVKtzXlm5QFESWwAEUrqlDtdU+e63FUZEqxZorrHlbM7rBGMfoy1hx6VZSRE792DLKIu3KRbXBEqhLshw6kcE/Y3yKmJFtXQ0hib0IWEYwHSVN7zYmnIPbo8oPNmkFqaeZUXHrgo="
-PACKER_KEYS=(
-  "keys/buildkite-packer"
-  "keys/buildkite-terraform"
-)

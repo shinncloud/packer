@@ -1,6 +1,6 @@
 {
   "variables": {
-    "buildkite_token": "",
+    "buildkite_token": "CiQAb9WAmHrjGlqFQvDLPpAxuA6QxDw6DfJzYy5DVKtzXlm5QFESWwAEUrqlDtdU+e63FUZEqxZorrHlbM7rBGMfoy1hx6VZSRE792DLKIu3KRbXBEqhLshw6kcE/Y3yKmJFtXQ0hib0IWEYwHSVN7zYmnIPbo8oPNmkFqaeZUXHrgo=",
     "buildkite_version": "3.14.0-3142",
     "project_id": "shinncloud",
     "version": ""
@@ -42,20 +42,18 @@
     },
     {
       "type": "file",
-      "source": "keys/buildkite-terraform",
-      "destination": "/tmp/buildkite-terraform"
-    },
-    {
-      "type": "file",
-      "source": "config/ssh_config",
-      "destination": "/tmp/ssh_config"
+      "source": "keys",
+      "destination": "/tmp"
     },
     {
       "type": "shell",
       "environment_vars": [
         "AGENT_TOKEN={{user `buildkite_token`}}",
         "AGENT_VERSION={{user `buildkite_version`}}",
-        "AGENT_TAGS=image={{user `version`}}"
+        "AGENT_TAGS=image={{user `version`}}",
+        "AGENT_KMS_KEY=buildkie",
+        "AGENT_KMS_KEYRING=packer",
+        "AGENT_KMS_LOCATION=global"
       ],
       "scripts": [
           "scripts/common.sh",

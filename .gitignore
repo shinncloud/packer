@@ -1,1 +1,2 @@
-keys/buildkite-packer
+keys/*
+!keys/*.enc
