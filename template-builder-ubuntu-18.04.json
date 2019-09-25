@@ -37,11 +37,6 @@
     },
     {
       "type": "file",
-      "source": "keys/buildkite-packer",
-      "destination": "/tmp/buildkite-packer"
-    },
-    {
-      "type": "file",
       "source": "keys",
       "destination": "/tmp"
     },

@@ -6,6 +6,7 @@ steps:
           command:
             - validate
             - template-builder-ubuntu-18.04.json
+  - wait
   - label: ":packer: Packer Build"
     plugins:
       - docker#v3.3.0:
